@@ -4,5 +4,6 @@ from app01 import views
 
 urlpatterns=[
     url('^index/',views.index),
-    url('^student/',views.StudentsView.as_view())
+    url('^student/',views.StudentsView.as_view()),
+    url('^order/',views.OrderView.as_view()),
 ]
