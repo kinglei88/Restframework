@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# from api.utils.auth import abc, ghi
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -120,3 +122,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+REST_FRAMEWORK = {
+
+    # todo 作为全局认证
+    "DEFAULT_AUTHENTICATION_CLASSES":['api.utils.auth.FirstAuthentication','api.utils.auth.Authentication'],
+    # "UNAUTHENTICATED_USER":abc,
+    # "UNAUTHENTICATED_TOKEN":ghi  # todo 是一个方法
+
+    "DEFAULT_PERMISSION_CLASSES":['api.utils.permission.SvipMyPermission'],
+    "DEFAULT_THROTTLE_CLASSES":['api.utils.throttle.VisitThrottle'],
+    "DEFAULT_THROTTLE_RATES":{
+        'james':'3/m',
+        'leborn':'6/m'
+    }
+
+
+}

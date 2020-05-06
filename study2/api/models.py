@@ -12,6 +12,9 @@ class UserInfo(models.Model):
     username = models.CharField(max_length=32,unique=True)
     password = models.CharField(max_length=64)
 
+    class Meta():
+        db_table = 'userinfo'
+
 
 
 class UserToken(models.Model):
